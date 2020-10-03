@@ -1,43 +1,38 @@
-// A simple representation of graph using STL
-#include <bits/stdc++.h>
-#include <vector>
-
+#include <iostream>
+#include "Graph.cpp"
 using namespace std;
 
-// A utility function to add an edge in an
-// undirected graph.
-void addEdge(vector<int> adj[], int u, int v)
+void menu();
+
+int main(int argc, char const *argv[])
 {
-  adj[u].push_back(v);
-  adj[v].push_back(u);
+    menu();
+    return 0;
 }
 
-// A utility function to print the adjacency list
-// representation of graph
-void printGraph(vector<int> adj[], int V)
+void menu()
 {
-  for (int v = 0; v < V; ++v)
-  {
-    cout << "\n Adjacency list of vertex "
-         << v << "\n head ";
-    for (auto x : adj[v])
-      cout << "-> " << x;
-    printf("\n");
-  }
-}
-
-// Driver code
-int main()
-{
-  int V = 5;
-  vector<int> adj[V];
-  addEdge(adj, 0, 1);
-  addEdge(adj, 0, 4);
-  addEdge(adj, 1, 2);
-  addEdge(adj, 1, 3);
-  addEdge(adj, 1, 4);
-  addEdge(adj, 2, 3);
-  addEdge(adj, 3, 4);
-  printGraph(adj, V);
-  return 0;
+    Graph grafo;
+    int rowsColumns{0};
+    // cout << "Ingresa el numero de filas y columnas: ";
+    // cin >> rowsColumns;
+    rowsColumns = 5;
+    grafo.setColumnsAndRows(rowsColumns);
+    grafo.print();
+    grafo.printDot();
+    grafo.insertVertex(rowsColumns);
+    int v1{0}, v2{0};
+    cout << "Ingresar coordenadas para agregar una arista : ";
+    cin >> v1 >> v2;
+    grafo.insertEdge(v1, v2);
+    grafo.printEdge();
+    cout << "Ingresar el vertice :";
+    cin >> v1;
+    grafo.removeVertex(v1);
+    cout << "Ingresar vertices : ";
+    cin >> v1 >> v2;
+    grafo.removeEdge(v1, v2);
+    cout << "Ingresar vertice : ";
+    cin >> v1;
+    grafo.adjency(v1);
 }
