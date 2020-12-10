@@ -29,7 +29,8 @@ void insertar(ArbolBinario &arbol, int x)
   else if (x > arbol->nro)
     insertar(arbol->der, x);
 }
-void preOrden(ArbolBinario arbol)
+
+void preOrde(ArbolBinario arbol)
 {
   if (arbol != NULL)
   {
@@ -61,12 +62,10 @@ void preOrden(ArbolBinario arbol)
 void enOrden(ArbolBinario arbol)
 {
   ofstream file;
-  file.open("graphComplement.dot");
   if (arbol != NULL)
   {
     enOrden(arbol->izq);
     cout << arbol->nro << " ";
-    file << arbol->nro << " ";
     enOrden(arbol->der);
   }
 }
